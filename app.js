@@ -1,14 +1,13 @@
 const express = require("express");
+const productRoutes = require('./src/rest-api/routes/products');
+const orderRoutes = require('./src/rest-api/routes/orders')
+
+
 const app = express();
 
-// app.use( (req, res, next) => {
-//     res.status(200).json({
-//         message: "server stated"
-//     });
-// });
 
-const productRoutes = require('./src/rest-api/routes/products');
 app.use("/products", productRoutes);
+app.use("/orders", orderRoutes)
 
 app.use( (req, res, next) => {
     const error = new Error('Request Not Found...')
